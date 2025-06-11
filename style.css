@@ -61,3 +61,20 @@ footer {
   background: #eee;
   font-size: 0.9rem;
 }
+.about-section .about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.about-photo img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
