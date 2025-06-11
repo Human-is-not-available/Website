@@ -34,33 +34,7 @@ section {
   margin-bottom: 3rem;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-.project-card {
-  background: #fff;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.project-card a {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: #0077cc;
-  text-decoration: none;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem 0;
-  background: #eee;
-  font-size: 0.9rem;
-}
+/* Flex layout only for about section */
 .about-section .about-content {
   display: flex;
   align-items: center;
@@ -71,10 +45,18 @@ footer {
 .about-text {
   flex: 1;
   padding-right: 20px;
-}
+@media (max-width: 600px) {
+  .about-section .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
 
-.about-photo img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
+  .about-text {
+    padding-right: 0;
+  }
+
+  .about-photo img {
+    width: 80%;
+    margin-top: 20px;
+  }
 }
