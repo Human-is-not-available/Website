@@ -52,4 +52,10 @@ section {
   height: auto;
   border-radius: 10px;
 }
+.achievement-section .achievement-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 }
