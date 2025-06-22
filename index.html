@@ -57,7 +57,7 @@
       <div class="project-card">
         <h3>SUTD-SST Big-D Camp</h3>
         <p>Innovation bootcamp focused on real-world disaster relief problems.</p>
-        <a href="#" class="open-modal" data-title="SUTD-SST Big-D Camp" data-description="A 3-day innovation camp where we built a rubble-clearing robot using tools like soldering, laser cutting, and 3D printing. We pitched our solution and competed with other teams.">View Project</a>
+        <a href="#" class="open-modal" data-title="SUTD-SST Big-D Camp" data-description="A 3-day innovation camp where we built a rubble-clearing robot using tools like soldering, laser cutting, and 3D printing. We pitched our solution and competed with other teams." data-images="1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg, 7.jpg">See more</a>
       </div>
       <div class="project-card">
         <h3>2024 ARTC Camp</h3>
@@ -116,36 +116,74 @@
     <p>&copy; 2025 Matthew Adriel Tjiandra. All rights reserved.</p>
   </footer>
 
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <h3 id="modal-title">Title</h3>
-      <p id="modal-description">Description</p>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h3 id="modal-title">Title</h3>
+    <p id="modal-description">Description</p>
+
+    <!-- ✅ NEW IMAGE GALLERY HTML -->
+    <div id="modal-gallery" class="gallery">
+      <img id="gallery-image" src="" alt="Gallery Image">
+      <div class="gallery-controls">
+        <button id="prev-img">&lt;</button>
+        <button id="next-img">&gt;</button>
+      </div>
     </div>
   </div>
+</div>
 
-  <script>
-    const modal = document.getElementById("modal");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDescription = document.getElementById("modal-description");
-    const closeBtn = document.querySelector(".close-button");
+<script>
+  const modal = document.getElementById("modal");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const galleryImage = document.getElementById("gallery-image");
+  const closeBtn = document.querySelector(".close-button");
 
-    document.querySelectorAll(".open-modal").forEach(link => {
-      link.addEventListener("click", function(e) {
-        e.preventDefault();
-        modalTitle.textContent = this.dataset.title;
-        modalDescription.textContent = this.dataset.description;
-        modal.style.display = "block";
-      });
+  let currentImageIndex = 0;
+  let galleryImages = [];
+
+  document.querySelectorAll(".open-modal").forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      modalTitle.textContent = this.dataset.title;
+      modalDescription.textContent = this.dataset.description;
+
+      // Get image list from data-images
+      galleryImages = (this.dataset.images || "").split(",").map(img => img.trim()).filter(Boolean);
+      currentImageIndex = 0;
+      updateGalleryImage();
+      modal.style.display = "block";
     });
+  });
 
-    closeBtn.onclick = () => modal.style.display = "none";
+  function updateGalleryImage() {
+    if (galleryImages.length > 0) {
+      galleryImage.src = galleryImages[currentImageIndex];
+      galleryImage.style.display = "block";
+    } else {
+      galleryImage.style.display = "none";
+    }
+  }
 
-    window.onclick = (e) => {
-      if (e.target == modal) {
-        modal.style.display = "none";
-      }
-    };
-  </script>
+  document.getElementById("prev-img").addEventListener("click", () => {
+    if (galleryImages.length > 0) {
+      currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateGalleryImage();
+    }
+  });
+
+  document.getElementById("next-img").addEventListener("click", () => {
+    if (galleryImages.length > 0) {
+      currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+      updateGalleryImage();
+    }
+  });
+
+  closeBtn.onclick = () => modal.style.display = "none";
+  window.onclick = (e) => {
+    if (e.target == modal) modal.style.display = "none";
+  };
+</script>
 </body>
 </html>
