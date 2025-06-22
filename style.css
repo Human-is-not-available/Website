@@ -77,33 +77,25 @@ section {
   font-size: 24px;
   cursor: pointer;
 }
-div.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
+.gallery {
+  margin-top: 1rem;
   text-align: center;
 }
-div.scroll-container {
-  background-color: #333;
-  overflow: auto;
-  white-space: nowrap;
-  padding: 10px;
+
+#gallery-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-div.scroll-container img {
-  padding: 10px;
+.gallery-controls {
+  margin-top: 0.5rem;
+}
+
+.gallery-controls button {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
 }
